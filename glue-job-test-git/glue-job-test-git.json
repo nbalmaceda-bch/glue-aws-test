@@ -1,0 +1,35 @@
+{
+  "name" : "glue-job-test-git",
+  "jobMode" : "SCRIPT",
+  "description" : "",
+  "role" : "arn:aws:iam::058264199132:role/biu-rol-sgcampanias-sbx-glue",
+  "executionProperty" : {
+    "maxConcurrentRuns" : 1
+  },
+  "command" : {
+    "name" : "glueetl",
+    "scriptLocation" : "s3://biu-sgcampanias-sbx-glue-jobs/job.py",
+    "pythonVersion" : "3"
+  },
+  "defaultArguments" : {
+    "--continuous-log-logGroup" : "/aws-glue/glue-jobs/",
+    "--enable-continuous-log-filter" : "true",
+    "--enable-job-insights" : "true",
+    "--job-language" : "python",
+    "--enable-continuous-cloudwatch-log" : "true"
+  },
+  "maxRetries" : 0,
+  "allocatedCapacity" : 10,
+  "timeout" : 2880,
+  "maxCapacity" : 10.0,
+  "glueVersion" : "4.0",
+  "numberOfWorkers" : 10,
+  "workerType" : "G.1X",
+  "executionClass" : "STANDARD",
+  "sourceControlDetails" : {
+    "provider" : "GITHUB",
+    "repository" : "glue-aws-test",
+    "branch" : "main",
+    "folder" : "glue-job-test-git"
+  }
+}
